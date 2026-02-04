@@ -109,6 +109,7 @@ export default function App() {
 
       <footer style={{ marginTop: '40px', fontSize: '0.8rem', color: '#666' }}>
         <p><strong>Security Note:</strong> This tool uses destructive canvas rendering. Redacted pixels are physically deleted and cannot be un-blurred.</p>
+        <p>Privacy First: We use Tesseract.js for local OCR. Your documents are never uploaded to a server. All redaction is performed on an HTML5 Canvas using destructive pixel manipulation, making it mathematically impossible to recover the hidden data. Please review the created file to ensure that all required details are redacted and use the manual scrubber to delete any additional data</p>
       </footer>
     </div>
   );
