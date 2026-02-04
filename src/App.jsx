@@ -176,7 +176,7 @@ export default function App() {
           <span>✓ Permanent Redaction</span>
         </div>
         <p style={{ fontSize: '0.8rem', color: '#9ca3af', maxWidth: '600px', margin: '0 auto' }}>
-          StealthInvoice uses browser-based OCR and Canvas manipulation. When you redact an area, the underlying pixel data is permanently overwritten before export.
+          StealthInvoice uses browser-based OCR and Canvas manipulation. When you redact an area, the underlying pixel data is permanently overwritten before export. Please check that all required data has been redacted and use the manual tool provided if further redaction is required. We will not be held liable for the release of any sensitive data.
         </p>
       </footer>
 
