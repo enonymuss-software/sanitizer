@@ -174,6 +174,7 @@ export default function App() {
           <span>✓ Local Processing</span>
           <span>✓ No Server Uploads</span>
           <span>✓ Permanent Redaction</span>
+          <span>✓ <a href="https://github.com/enonymuss-software/sanitizer/blob/main/LICENSE" target="_blank" style={{ color: '#6b7280', textDecoration: 'underline' }}>MIT Licensed</a></span>
         </div>
         <p style={{ fontSize: '0.8rem', color: '#9ca3af', maxWidth: '600px', margin: '0 auto' }}>
           StealthInvoice uses browser-based OCR and Canvas manipulation. When you redact an area, the underlying pixel data is permanently overwritten before export. Please check that all required data has been redacted and use the manual tool provided if further redaction is required. We will not be held liable for the release of any sensitive data.
