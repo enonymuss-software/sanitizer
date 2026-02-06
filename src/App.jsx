@@ -50,22 +50,30 @@ export default function App() {
     setIsProcessing(true);
     try {
       const { data: { words } } = await Tesseract.recognize(canvasRef.current, 'eng');
-      const sensitivePatterns = /[@]|(\d{4,})|IBAN|Total|Address|Phone|Invoice|Amount/gi;
+      
+      // We widen the search patterns to be more aggressive
+      const sensitivePatterns = /[@]|(\d{3,})|IBAN|Total|Address|Phone|Invoice|Amount|Balance|Account|Name/gi;
 
       words.forEach(word => {
-        if (sensitivePatterns.test(word.text) || word.confidence < 50) {
+        if (sensitivePatterns.test(word.text) || word.confidence < 60) {
           ctxRef.current.fillStyle = 'black';
+          // MITIGATION: We add significant random padding (10-20px) 
+          // to prevent character-length guessing.
+          const padding = 10;
           ctxRef.current.fillRect(
-            word.bbox.x0 - 4, 
-            word.bbox.y0 - 4, 
-            (word.bbox.x1 - word.bbox.x0) + 8, 
-            (word.bbox.y1 - word.bbox.y0) + 8
+            word.bbox.x0 - padding, 
+            word.bbox.y0 - 2, 
+            (word.bbox.x1 - word.bbox.x0) + (padding * 2), 
+            (word.bbox.y1 - word.bbox.y0) + 4
           );
         }
       });
+      
+      // Safety Warning
+      alert("Auto-redaction complete. IMPORTANT: Please use the Manual Brush to cover any items the AI may have missed before downloading.");
+      
     } catch (err) {
       console.error("OCR Error:", err);
-      alert("Error scanning image.");
     }
     setIsProcessing(false);
   };
